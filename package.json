@@ -4,7 +4,7 @@
   "description": "Taller 2 - 2c 2021 - Frontend repository",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --env=jsdom",
     "start": "webpack serve  --hot --open",
     "build": "webpack --config webpack.config.js --mode production"
   },
@@ -20,8 +20,12 @@
   },
   "homepage": "https://github.com/recheconea/ubademy-front#readme",
   "dependencies": {
+    "@testing-library/react": "^12.1.0",
+    "babel-jest": "^27.2.0",
+    "jest": "^27.2.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
