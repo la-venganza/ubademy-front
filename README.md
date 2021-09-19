@@ -23,4 +23,3 @@ Taller 2 - 2c 2021 - Frontend repository
 >     -p 3001:3000 \
 >     -e CHOKIDAR_USEPOLLING=true \
 >     ubademy:front
-
