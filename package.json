@@ -4,7 +4,7 @@
   "description": "Taller 2 - 2c 2021 - Frontend repository",
   "main": "index.js",
   "scripts": {
-    "test": "jest --env=jsdom",
+    "test": "jest --env=jsdom --coverage && coveralls < coverage/lcov.info",
     "start": "webpack serve  --hot --open",
     "build": "webpack --config webpack.config.js --mode production",
     "lint": "eslint .eslintrc.js  ."
