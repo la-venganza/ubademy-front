@@ -1,3 +1,7 @@
+[![Build Status](https://app.travis-ci.com/la-venganza/ubademy-front.svg?branch=develop)](https://app.travis-ci.com/la-venganza/ubademy-front)
+
+[![Coverage Status](https://coveralls.io/repos/github/la-venganza/ubademy-front/badge.svg?branch=develop)](https://coveralls.io/github/la-venganza/ubademy-front?branch=develop)
+
 # ubademy-front
 Taller 2 - 2c 2021 - Frontend repository
 
