@@ -7,6 +7,10 @@ module.exports = {
     filename: 'bundle.[hash].js',
     path: path.resolve(__dirname, 'dist'),
   },
+  devServer: {
+    inline: true,
+    port: process.env.PORT || 8080
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
