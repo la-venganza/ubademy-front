@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jest --env=jsdom --coverage && coveralls < coverage/lcov.info",
     "start": "webpack serve  --hot --open",
-    "build": "webpack --config webpack.config.js --mode production",
+    "build": "webpack --mode production",
     "lint": "eslint .eslintrc.js  ."
   },
   "repository": {
