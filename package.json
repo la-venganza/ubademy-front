@@ -9,7 +9,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --env=jsdom --coverage && coveralls < coverage/lcov.info",
-    "start": "webpack serve  --hot --open",
+    "start": "node server.js",
+    "dev": "webpack serve  --hot --open",
     "build": "webpack --mode production",
     "lint": "eslint .eslintrc.js  ."
   },
