@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --env=jsdom --coverage && coveralls < coverage/lcov.info",
-    "start": "webpack-dev-server --port $PORT --host 0.0.0.0",
+    "start": "webpack serve  --hot --open",
     "build": "webpack --mode production",
     "lint": "eslint .eslintrc.js  ."
   },
