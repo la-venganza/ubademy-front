@@ -18,5 +18,6 @@ instance.interceptors.response.use((response) => {
 
 export const configureAxiosHeaders = (token) => {
   instance.defaults.headers['X-Auth-Token'] = token;
-  instance.defaults.headers.Cookie = `firebaseAuth=${token}`;
+  // instance.defaults.headers.Cookie = `firebaseAuth=${token}`;
+  document.cookie = `firebaseAuth=${token}`;
 };

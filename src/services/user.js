@@ -1,4 +1,4 @@
-import { instance } from '../utils/httpClient';
+import { instance, configureAxiosHeaders } from '../utils/httpClient';
 
 const getUser = async (email) => {
   try {
@@ -13,4 +13,8 @@ const getUser = async (email) => {
   }
 };
 
-export default { getUser };
+const setCookie = async (token) => {
+  configureAxiosHeaders(token);
+};
+
+export default { getUser, setCookie };

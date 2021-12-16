@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
-  getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,
+  getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,
 } from 'firebase/auth';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -8,28 +8,30 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import userService from '../services/user';
-import { configureAxiosHeaders } from '../utils/httpClient';
+import { AuthContext } from '../context/auth';
 
 const provider = new GoogleAuthProvider();
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const authCtx = useContext(AuthContext);
 
   const doLogin = (e) => {
     e.preventDefault();
     const auth = getAuth();
-    debugger;
-    createUserWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const { user } = userCredential;
-        // ...
+        const token = userCredential.accessToken;
+        userService.setCookie(token);
+        userService.getUser(user.email).then((response) => {
+          authCtx.setAuthState({ token });
+        });
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
+        console.log('internal error on login: ', error);
       });
   };
 
@@ -39,25 +41,14 @@ const LoginScreen = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
-        debugger;
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
-        configureAxiosHeaders(token);
+        userService.setCookie(token);
         userService.getUser(result.user.email).then((response) => {
-          debugger;
+          authCtx.setAuthState({ token });
         });
-        // The signed-in user info.
-        const { user } = result;
-        // ...
       }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const { email } = error;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+        console.log('internal error on login: ', error);
       });
   };
 
