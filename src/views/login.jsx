@@ -21,13 +21,13 @@ const LoginScreen = () => {
     e.preventDefault();
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         // Signed in
         const { user } = userCredential;
-        const token = userCredential.accessToken;
-        userService.setCookie(token);
+        const idToken = await auth.currentUser.getIdToken();
+        userService.setCookie(idToken);
         userService.getUser(user.email).then((response) => {
-          authCtx.setAuthState({ token });
+          authCtx.setAuthState({ idToken });
         });
       })
       .catch((error) => {
@@ -39,13 +39,12 @@ const LoginScreen = () => {
     e.preventDefault();
     const auth = getAuth();
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        userService.setCookie(token);
+        const idToken = await auth.currentUser.getIdToken();
+        userService.setCookie(idToken);
         userService.getUser(result.user.email).then((response) => {
-          authCtx.setAuthState({ token });
+          authCtx.setAuth({ token: idToken });
         });
       }).catch((error) => {
         console.log('internal error on login: ', error);
