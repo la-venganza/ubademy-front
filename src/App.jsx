@@ -1,9 +1,15 @@
 import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter, Route, Routes, HashRouter,
+} from 'react-router-dom';
+import { Box } from '@mui/material';
 import Login from './views/login';
+import Users from './views/users';
 import Courses from './views/courses';
 import { AuthContext, AuthProvider } from './context/auth';
+import Header from './components/Header';
+import SideMenu from './components/Drawer';
 
 const theme = createTheme();
 
@@ -13,23 +19,38 @@ const App = () => (
       <AuthContext.Consumer>
         { ({ auth }) => (
           <div>
-            asd
-            <BrowserRouter>
-              <Routes>
-                {
+            {
                   (() => {
                     if (auth.token !== '') {
                       return (
-                        <Route path="/" element={<Courses />} />
+                        <>
+
+                          <HashRouter>
+                            <Header />
+                            <Box>
+                              <SideMenu />
+                              <Routes>
+                                <Route path="/" element={<Users />} />
+                                <Route path="/courses" element={<Courses />} />
+
+                              </Routes>
+                            </Box>
+                          </HashRouter>
+
+                        </>
                       );
                     }
                     return (
-                      <Route path="/" element={<Login />} />
+
+                      <BrowserRouter>
+                        <Routes>
+                          <Route path="/" element={<Login />} />
+
+                        </Routes>
+                      </BrowserRouter>
                     );
                   })()
                 }
-              </Routes>
-            </BrowserRouter>
           </div>
         )}
       </AuthContext.Consumer>

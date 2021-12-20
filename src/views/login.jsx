@@ -27,7 +27,7 @@ const LoginScreen = () => {
         const idToken = await auth.currentUser.getIdToken();
         userService.setCookie(idToken);
         userService.getUser(user.email).then((response) => {
-          authCtx.setAuthState({ idToken });
+          authCtx.setAuthState(idToken);
         });
       })
       .catch((error) => {
@@ -44,7 +44,7 @@ const LoginScreen = () => {
         const idToken = await auth.currentUser.getIdToken();
         userService.setCookie(idToken);
         userService.getUser(result.user.email).then((response) => {
-          authCtx.setAuth({ token: idToken });
+          authCtx.setAuth(idToken);
         });
       }).catch((error) => {
         console.log('internal error on login: ', error);
