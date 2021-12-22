@@ -12,6 +12,7 @@ import Header from './components/Header';
 import SideMenu from './components/Drawer';
 import UserDetailView from './views/userDetailView';
 import CourseDetail from './views/courseDetail';
+import Dashboard from './views/dashboard';
 
 const theme = createTheme();
 
@@ -32,7 +33,8 @@ const App = () => (
                             <Box>
                               <SideMenu />
                               <Routes>
-                                <Route path="/" element={<Users />} />
+                                <Route path="/" element={<Dashboard />} />
+                                <Route path="/users" element={<Users />} />
                                 <Route path="/courses" element={<Courses />} />
                                 <Route path="/user/:email" element={<UserDetailView />} />
                                 <Route path="/course/:id" element={<CourseDetail />} />
