@@ -15,7 +15,7 @@ const getUser = async (email) => {
 
 const getUserFull = async (email) => {
   try {
-    console.log('Trying to fetch user form back');
+    console.log('Trying to fetch user from back');
     const response = await instance.get(`/user/login/${email}?properties=all`);
     return response.data;
   } catch (error) {

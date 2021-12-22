@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import {
-  Box, TextField, Card, CardContent, CardMedia, Link,
+  Card, CardContent, Link,
 } from '@mui/material';
 import CardActionArea from '@mui/material/CardActionArea';
 import cloudStorage from '../../utils/cloudStorage';
@@ -37,12 +34,6 @@ const LessonsListItem = ({ lesson }) => {
               {lesson?.exam?.id ? 'TRUE' : 'FALSE'}
             </Typography>
           </CardContent>
-          {/* <CardMedia
-            component="img"
-            sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-            image={lesson.image}
-            alt={lesson.imageLabel}
-          /> */}
         </Card>
       </CardActionArea>
     </ListItem>
