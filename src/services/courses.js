@@ -10,4 +10,14 @@ const getCourses = async () => {
   }
 };
 
-export default { getCourses };
+const getCourse = async (id) => {
+  try {
+    const response = await instance.get(`/course/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log('Error at /course/id: ', error);
+    return null;
+  }
+};
+
+export default { getCourses, getCourse };

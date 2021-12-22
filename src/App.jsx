@@ -10,6 +10,8 @@ import Courses from './views/courses';
 import { AuthContext, AuthProvider } from './context/auth';
 import Header from './components/Header';
 import SideMenu from './components/Drawer';
+import UserDetailView from './views/userDetailView';
+import CourseDetail from './views/courseDetail';
 
 const theme = createTheme();
 
@@ -32,7 +34,8 @@ const App = () => (
                               <Routes>
                                 <Route path="/" element={<Users />} />
                                 <Route path="/courses" element={<Courses />} />
-
+                                <Route path="/user/:email" element={<UserDetailView />} />
+                                <Route path="/course/:id" element={<CourseDetail />} />
                               </Routes>
                             </Box>
                           </HashRouter>

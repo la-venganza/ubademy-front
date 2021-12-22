@@ -44,7 +44,10 @@ const LoginScreen = () => {
         const idToken = await auth.currentUser.getIdToken();
         userService.setCookie(idToken);
         userService.getUser(result.user.email).then((response) => {
-          authCtx.setAuth(idToken);
+          debugger;
+          if (response) {
+            authCtx.setAuth(idToken);
+          }
         });
       }).catch((error) => {
         console.log('internal error on login: ', error);
