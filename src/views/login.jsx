@@ -26,7 +26,7 @@ const LoginScreen = () => {
         const { user } = userCredential;
         const idToken = await auth.currentUser.getIdToken();
         userService.setCookie(idToken);
-        userService.getUser(user.email).then((response) => {
+        userService.getUser(user.email, 'email').then((response) => {
           authCtx.setAuthState(idToken);
         });
       })
@@ -43,8 +43,7 @@ const LoginScreen = () => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const idToken = await auth.currentUser.getIdToken();
         userService.setCookie(idToken);
-        userService.getUser(result.user.email).then((response) => {
-          debugger;
+        userService.getUser(result.user.email, 'google').then((response) => {
           if (response) {
             authCtx.setAuth(idToken);
           }
