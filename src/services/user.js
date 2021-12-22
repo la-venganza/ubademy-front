@@ -13,8 +13,18 @@ const getUser = async (email) => {
   }
 };
 
+const getUsers = async () => {
+  try {
+    const response = await instance.get('/user/all?page_size=999');
+    return response.data;
+  } catch (error) {
+    console.log('There was an error while fetching users!', error);
+    return null;
+  }
+};
+
 const setCookie = async (token) => {
   configureAxiosHeaders(token);
 };
 
-export default { getUser, setCookie };
+export default { getUser, setCookie, getUsers };

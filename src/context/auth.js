@@ -17,11 +17,10 @@ const AuthProvider = ({ children }) => {
     try {
       const authDataString = window.localStorage.getItem('auth');
       const authData = JSON.parse(authDataString || defaultData);
+      const { token } = authData;
       // Configure axios headers
-      configureAxiosHeaders(authData.token);
-      setAuthState({
-        token: authData.token,
-      });
+      configureAxiosHeaders(token);
+      setAuth(token);
     } catch (err) {
       setAuthState({
         token: '',

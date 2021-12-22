@@ -2,31 +2,31 @@ import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
-import CourseService from '../services/courses';
-import CourseList from '../components/CourseList';
+import UsersService from '../services/user';
+import UserList from '../components/UserList';
 
-const CoursesListView = () => {
-  const [courses, setCourses] = useState([]);
+const UsersListView = () => {
+  const [users, setUsers] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchCourses = async () => {
+    const fetchUsers = async () => {
       setLoading(true);
-      const coursesResponse = await CourseService.getCourses();
+      const usersResponse = await UsersService.getUsers();
       setLoading(false);
-      if (!coursesResponse) {
+      if (!usersResponse) {
         setError(true);
         return;
       }
-      setCourses(coursesResponse.results);
+      setUsers(usersResponse.results);
     };
-    fetchCourses();
+    fetchUsers();
   }, []);
 
   const renderLoading = () => (<div><span>Loading</span></div>);
-  const renderError = () => (<div><span>There was an error while fetching the courses</span></div>);
-  const renderResults = () => (<CourseList courses={courses} />);
+  const renderError = () => (<div><span>There was an error while fetching the users</span></div>);
+  const renderResults = () => (<UserList users={users} />);
 
   return (
     <Container component="main">
@@ -45,4 +45,4 @@ const CoursesListView = () => {
   );
 };
 
-export default CoursesListView;
+export default UsersListView;
