@@ -88,6 +88,17 @@ const Dashboard = () => {
             <DashboardCard value={metrics.passwordLoginMetrics} title="User/Password Logins" />
           </Paper>
         </Grid>
+        <Grid item xs={12} md={4} lg={3}>
+          <Paper sx={{
+            p: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            height: 120,
+          }}
+          >
+            <DashboardCard value={metrics.recoveryMetrics} title="Password recoveries" />
+          </Paper>
+        </Grid>
       </Grid>
     </Container>
   );
