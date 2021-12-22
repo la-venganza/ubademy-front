@@ -29,6 +29,15 @@ const SideMenu = () => (
     <Divider />
     <List>
       <Link to="/">
+        <ListItem button key="Home">
+          <ListItemIcon>
+            <Icon>home</Icon>
+          </ListItemIcon>
+          <ListItemText primary="home" />
+        </ListItem>
+      </Link>
+      <Divider />
+      <Link to="/users">
         <ListItem button key="Users">
           <ListItemIcon>
             <Icon>perm_identity</Icon>
