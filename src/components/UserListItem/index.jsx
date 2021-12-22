@@ -12,7 +12,7 @@ const UserListItem = ({ user }) => (
       <Avatar alt={`${user.first_name} ${user.last_name}`} src="/static/images/avatar/1.jpg" />
     </ListItemAvatar>
     <ListItemText
-      primary={`${user.first_name} ${user.last_name}`}
+      primary={`@${user.username}`}
       secondary={(
         <>
           <Typography
@@ -21,7 +21,7 @@ const UserListItem = ({ user }) => (
             variant="body2"
             color="text.primary"
           >
-            {`@${user.username}`}
+            {user.first_name ? `${user.first_name} ${user.last_name}` : 'no name provided'}
           </Typography>
           {'  -  '}
           {user.email}

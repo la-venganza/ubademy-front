@@ -11,7 +11,7 @@ const CoursesListView = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchCourses = async () => {
       setLoading(true);
       const coursesResponse = await CourseService.getCourses();
       setLoading(false);
@@ -21,7 +21,7 @@ const CoursesListView = () => {
       }
       setCourses(coursesResponse.results);
     };
-    fetchUsers();
+    fetchCourses();
   }, []);
 
   const renderLoading = () => (<div><span>Loading</span></div>);
